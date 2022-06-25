@@ -2,7 +2,7 @@
 
 ## Overview 
 
-React web app for identifying and analyzing feedbacks using Brain.js
+React web app for categorizing and analyzing numerical and text-based feedbacks using Brain.js
 
 ### Application Features
 
