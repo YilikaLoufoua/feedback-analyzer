@@ -17,6 +17,8 @@ tbody {
 
 .data-table {
     overflow: auto;
+    border: 0.5px solid black;
+
 
 }
 
