@@ -1,18 +1,22 @@
 import "./Dropdown.css";
-import {React, useState} from "react"
+import {React, useEffect, useState} from "react"
 
-export default function Dropdown({categorization, handleAddCategory}) {
+export default function Dropdown({categorization, handleAddCategory, feedback}) {
     
     const categories = Object.keys(categorization);
 
     let [selectedCategory, setSelectedCategory] = useState("")
-    let [isOpen, setIsOpen] = useState(false);
 
     const handleSelectCategory = (category) => {
         setSelectedCategory(category);
-        setIsOpen(false);
     }
 
+    useEffect(() => {
+        if (selectedCategory){
+            handleAddCategory(selectedCategory, feedback);
+        }
+    }, [selectedCategory])
+  
     return (
       <form className="dropdown">
         <div className="dropdown">
@@ -20,7 +24,9 @@ export default function Dropdown({categorization, handleAddCategory}) {
                 className="dropbtn" 
                 style={{backgroundColor: (selectedCategory!="") ? '#c9daf8' : 'white'}}>{selectedCategory || 'Category'}</button>
             <div className="dropdown-content">
-            { categories && categories.map((category) => (<a onClick={() => handleSelectCategory(category)}>{category}</a>))}
+            { categories && categories.map((category) => (
+                <a key={category} onClick={() => handleSelectCategory(category)}>{category}</a>
+            ))}
             </div>
         </div>
       </form>

@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Papa from "papaparse";
-import Category from "./Category/Category";
+import CategorizationBox from "./CategorizationBox/CategorizationBox";
 
 const brain = require("brain.js"); // import from is not supported by brain.js
 
@@ -27,8 +27,17 @@ const App = () => {
 		}
 	}, [data]);
 
-	const handleAddCategory = (feedack) => {
-		console.log(feedack);
+	const handleAddCategory = (category, feedback) => {
+    // TODO: Store categorization of feedback
+    // 1. Access category within categorization data
+	// 		a. Find category
+	// 		b. Find feedback, if not found, append, else remove feedback then reappend
+    // 2. Set categorization state
+	let categorizedFeedbacks = categorization[category]
+	categorizedFeedbacks.push(feedback);
+	// categorizedFeedbacks.append(feedback);
+	categorization[category] = categorizedFeedbacks
+	console.log('categorization: ', categorization);
 	}
 
 	const processData = () => {
@@ -136,7 +145,7 @@ const App = () => {
 					</button>
 				</div> */}
 			</div>
-			{selectedColumn && <Category selectedColumn={selectedColumn} data={data} categorization={categorization} handleAddCategory={handleAddCategory}/>}
+			{selectedColumn && <CategorizationBox selectedColumn={selectedColumn} data={data} categorization={categorization} handleAddCategory={handleAddCategory}/>}
 			<div className="data-table">
 				<table>
 					<tbody>

@@ -1,4 +1,4 @@
-import "./Category.css";
+import "./CategorizationBox.css";
 import Dropdown from "../Dropdown/Dropdown";
 
 export default function Category({ selectedColumn, data, categorization, handleAddCategory }) {
@@ -15,7 +15,7 @@ export default function Category({ selectedColumn, data, categorization, handleA
         {data.map((item, i) => {
           return i == 0 ? null : item[idx] == "" ? null : 
           <li key={item}>
-            <Dropdown categorization={categorization} handleAddCategory={handleAddCategory}/><p>{item[idx]}</p>
+            <Dropdown categorization={categorization} handleAddCategory={handleAddCategory} feedback={item[idx]}/><p>{item[idx]}</p>
           </li>;
         })}
       </div>
