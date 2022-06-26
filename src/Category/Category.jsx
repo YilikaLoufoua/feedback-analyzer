@@ -1,17 +1,22 @@
 import "./Category.css";
+import Dropdown from "../Dropdown/Dropdown";
 
-export default function Category({ category, data }) {
+export default function Category({ selectedColumn, data, categorization, handleAddCategory }) {
   let idx;
+
   data[0].forEach((item, index) => {
-    if (item == category) idx = index;
+    if (item == selectedColumn) idx = index;
   });
-  console.log(idx);
+
   return (
-    <div id="category">
-      <h1>{category}</h1>
-      <div class="info">
+    <div id="categorization-box">
+      <h2>Categorize {selectedColumn}</h2>
+      <div className="info">
         {data.map((item, i) => {
-          return i == 0 ? null : item[idx] == "" ? null : <li>{item[idx]}</li>;
+          return i == 0 ? null : item[idx] == "" ? null : 
+          <li key={item}>
+            <Dropdown categorization={categorization} handleAddCategory={handleAddCategory}/><p>{item[idx]}</p>
+          </li>;
         })}
       </div>
     </div>
