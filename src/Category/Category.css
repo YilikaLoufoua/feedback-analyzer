@@ -1,0 +1,22 @@
+#category {
+  display: flex;
+  width: 50vw;
+  margin: 0 auto;
+  border: 1px solid;
+  text-align: center;
+  flex-direction: column;
+}
+.info {
+  display: flex;
+  overflow: auto;
+  list-style: none;
+  flex-direction: column;
+  overflow: auto;
+  height: 50vh;
+}
+.info li {
+  padding: 10px;
+}
+.info li:nth-child(even) {
+  background-color: #e8f0fe;
+}

@@ -1,45 +1,52 @@
 main {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.category {
+  cursor: pointer;
+}
+.category:hover {
+  background: gray;
+  transition: 0.4s;
 }
 
 .header {
-    margin: 3rem;
+  margin: 3rem;
 }
 
-thead, tbody {
-    display: block;
+thead,
+tbody {
+  display: block;
 }
 
 tbody {
-    height: 70vh;
+  height: 70vh;
 }
 
 .data-table {
-    overflow: auto;
-    border: 0.5px solid black;
-
-
+  overflow: auto;
+  border: 0.5px solid black;
 }
 
 .data-table table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 th {
-    min-width: 150px;
-    text-align: center;
-    padding: 8px;
-    background-color: #c9daf8;
-    border: 0.5px solid black;
+  min-width: 150px;
+  text-align: center;
+  padding: 8px;
+  background-color: #c9daf8;
+  border: 0.5px solid black;
 }
 
 td {
-    text-align: left;
-    padding: 8px;
-    border: 0.5px solid black;
+  text-align: left;
+  padding: 8px;
+  border: 0.5px solid black;
 }
 
 tr:nth-child(even) {
-    background-color: #e8f0fe
+  background-color: #e8f0fe;
 }
