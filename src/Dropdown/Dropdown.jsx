@@ -18,18 +18,18 @@ export default function Dropdown({categorization, handleAddCategory, feedback}) 
     }, [selectedCategory])
   
     return (
-      <form className="dropdown">
+
         <div className="dropdown">
             <button 
                 className="dropbtn" 
-                style={{backgroundColor: (selectedCategory!="") ? '#c9daf8' : 'white'}}>{selectedCategory || 'Category'}</button>
+                style={{backgroundColor: (selectedCategory!="") ? '#c9daf8' : 'white'}} >{selectedCategory || 'Category'}</button>
             <div className="dropdown-content">
             { categories && categories.map((category) => (
                 <a key={category} onClick={() => handleSelectCategory(category)}>{category}</a>
             ))}
             </div>
         </div>
-      </form>
+
       
     );
 }

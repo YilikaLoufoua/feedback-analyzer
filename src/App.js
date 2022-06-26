@@ -34,6 +34,10 @@ const App = () => {
 	// 		b. Find feedback, if not found, append, else remove feedback then reappend
     // 2. Set categorization state
 	let categorizedFeedbacks = categorization[category]
+	console.log(categorizedFeedbacks)
+	console.log(feedback)
+	console.log(categorizedFeedbacks.find((item)=>{return feedback == item}))
+	if(categorizedFeedbacks.find((item)=>{return feedback === item}))return
 	categorizedFeedbacks.push(feedback);
 	// categorizedFeedbacks.append(feedback);
 	categorization[category] = categorizedFeedbacks
