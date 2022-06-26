@@ -9,8 +9,12 @@ React web app for categorizing and analyzing numerical and text-based feedbacks 
 #### Core Features
 
 - [x] User can import real-life feedback data.
-- [x] User can view imported data in a scrollable table.
-- [ ] User can manually calibrate feedbacks as positive or negative
-- [ ] User can categorize text-based feedbacks by user-defined categories
-- [ ] User can view text-based feedbacks by positive, neutral, and negative sentiment.
-- [ ] User can view text-based feedbacks by both category and sentiment.
+- [x] User can view imported data in a table.
+- [ ] User can manually label the sentiment of feedbacks as positive, neutral, or negative.
+- [ ] User can label text-based feedbacks by various categories.
+- [ ] User can create new categories.
+- [ ] User can filter text-based feedbacks by both category and sentiment.
+
+#### Stretch Features
+
+- [ ] User can use all labeled feedbacks as training data to calibrate neural network and label new data
