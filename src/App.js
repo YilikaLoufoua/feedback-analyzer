@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Papa from "papaparse";
 import CategorizationBox from "./CategorizationBox/CategorizationBox";
+import CategoriesView from "./CategoriesView/CategoriesView";
 
 const brain = require("brain.js"); // import from is not supported by brain.js
 
@@ -14,11 +15,11 @@ const App = () => {
 
 	// Create a dictionary of categories and feedbacks
 	useEffect(() => {
-		const categories = ['Course Experience', 'Material', 'Lecture', 'Course Structure', 'Peer Relations', 'Administration', 'Support', 'Technical Topic'];
+		const categories = ["Course Experience", "Material", "Lecture", "Course Structure", "Peer Relations", "Administration", "Support", "Technical Topic"];
 		let obj = {};
-		categories.forEach((category) => obj[category] = []); 
-		setCategorization(obj)
-	}, [data])
+		categories.forEach((category) => (obj[category] = []));
+		setCategorization(obj);
+	}, [data]);
 
 	// Process parsed CSV
 	useEffect(() => {
@@ -28,21 +29,29 @@ const App = () => {
 	}, [data]);
 
 	const handleAddCategory = (category, feedback) => {
-    // TODO: Store categorization of feedback
-    // 1. Access category within categorization data
-	// 		a. Find category
-	// 		b. Find feedback, if not found, append, else remove feedback then reappend
-    // 2. Set categorization state
-	let categorizedFeedbacks = categorization[category]
-	console.log(categorizedFeedbacks)
-	console.log(feedback)
-	console.log(categorizedFeedbacks.find((item)=>{return feedback == item}))
-	if(categorizedFeedbacks.find((item)=>{return feedback === item}))return
-	categorizedFeedbacks.push(feedback);
-	// categorizedFeedbacks.append(feedback);
-	categorization[category] = categorizedFeedbacks
-	console.log('categorization: ', categorization);
-	}
+		// TODO: Store categorization of feedback
+		// 1. Access category within categorization data
+		// 		a. Find category
+		// 		b. Find feedback, if not found, append, else remove feedback then reappend
+		// 2. Set categorization state
+		let categorizedFeedbacks = categorization[category];
+
+		if (
+			categorizedFeedbacks.find((item) => {
+				return feedback === item;
+			})
+		)
+			return;
+		categorizedFeedbacks.push(feedback);
+
+		let newCategorization = {};
+		newCategorization[category] = categorizedFeedbacks;
+
+		setCategorization((prevState) => ({
+			...prevState,
+			...newCategorization,
+		}));
+	};
 
 	const processData = () => {
 		// // // Sample Network Training Process
@@ -68,10 +77,9 @@ const App = () => {
 		// // Predict
 		// const testString = "I like PC.";
 		// const output = newNetwork.run(testString);
-		// 
-		// 
-		// 
-
+		//
+		//
+		//
 		// TODO: 1. Define categories for grouping feedbacks
 		// 2. Create training data with categorized and non-category feedbacks
 		// 3. Train and export network
@@ -79,7 +87,7 @@ const App = () => {
 		// 5. Create a calibration system for miscategorized feedbacks
 		// 6. Repeat retraining and evaluating until categorization decently accurate
 		// 7. Test on new dataset
-	}
+	};
 
 	//  TODO: Upload neural netowrk as json
 	// const importNetwork = () => {
@@ -117,39 +125,49 @@ const App = () => {
 			fileReader.onload = function (event) {
 				const csvString = event.target.result;
 				const data = Papa.parse(csvString).data;
-				// 
-				// 
+				//
+				//
 				setData(data);
 			};
-
 			fileReader.readAsText(file);
 		}
+	};
+
+	const handleOnClear = () => {
+		setData(undefined);
 	};
 
 	return (
 		<main>
 			<div className="header">
 				<h1>Feedback Analyzer</h1>
-				<div className="csv-input">
-					<form>
-						<input type={"file"} id={"csvFileInput"} accept={".csv"} onChange={(e) => handleOnChange(e)} />
-						<button
-							onClick={(e) => {
-								handleOnSubmit(e);
-							}}
-						>
-							Import CSV
-						</button>
-					</form>
-				</div>
-				{/* <div className="network-input">
+			</div>
+			<div className="csv-input">
+				<input className="custom-file-input" type={"file"} id={"csvFileInput"} accept={".csv"} onChange={(e) => handleOnChange(e)} />
+				<button
+					onClick={(e) => {
+						handleOnSubmit(e);
+					}}
+				>
+					Import CSV
+				</button>
+				<button
+					onClick={(e) => {
+						handleOnClear();
+					}}
+				>
+					Clear Data
+				</button>
+			</div>
+			<CategoriesView categorization={categorization} />
+			{/* <div className="network-input">
 					<button type="button">Import Network</button>
 					<button type="button" onClick={() => exportNetwork()}>
 						Export Network
 					</button>
 				</div> */}
-			</div>
-			{selectedColumn && <CategorizationBox selectedColumn={selectedColumn} data={data} categorization={categorization} handleAddCategory={handleAddCategory}/>}
+			{selectedColumn && <CategorizationBox selectedColumn={selectedColumn} data={data} categorization={categorization} handleAddCategory={handleAddCategory} />}
+			<h2> {data && file.name}</h2>
 			<div className="data-table">
 				<table>
 					<tbody>
@@ -163,15 +181,16 @@ const App = () => {
 									);
 								})}
 						</tr>
-						{data && data.map((row, idx) =>
-							idx === 0 ? null : (
-								<tr key={row}>
-									{row.map((col, idx) => (
-										<td key={idx}>{col}</td>
-									))}
-								</tr>
-							)
-						)}
+						{data &&
+							data.map((row, idx) =>
+								idx === 0 ? null : (
+									<tr key={row}>
+										{row.map((col, idx) => (
+											<td key={idx}>{col}</td>
+										))}
+									</tr>
+								)
+							)}
 					</tbody>
 				</table>
 			</div>

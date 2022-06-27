@@ -4,7 +4,7 @@
   border: 1px solid;
   text-align: center;
   flex-direction: column;
-  height: 40vh;
+  height: 70vh;
 }
 
 #categorization-box h2 {
@@ -20,7 +20,6 @@
   overflow: auto;
   flex-direction: column;
   overflow: auto;
-  height: 50vh;
 }
 
 .info li {

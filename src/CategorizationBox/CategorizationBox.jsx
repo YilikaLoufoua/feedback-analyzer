@@ -1,13 +1,11 @@
 import "./CategorizationBox.css";
 import Dropdown from "../Dropdown/Dropdown";
 
-export default function Category({ selectedColumn, data, categorization, handleAddCategory }) {
+export default function CategorizationBox({ selectedColumn, data, categorization, handleAddCategory }) {
   let idx;
-
-  data[0].forEach((item, index) => {
+  if (data) {data[0].forEach((item, index) => {
     if (item == selectedColumn) idx = index;
-  });
-
+  });}
   return (
     <div id="categorization-box">
       <h2>Categorize {selectedColumn}</h2>
