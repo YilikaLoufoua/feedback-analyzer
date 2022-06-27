@@ -8,7 +8,7 @@ export default function CategoriesView({ categorization, selectedCategory, setSe
 				{Object.keys(categorization).map((category) => {
 					if (categorization[category].length > 0) {
 						return (
-							<button key={category} onClick={() => setSelectedCategory(category)}>
+							<button className={selectedCategory === category ? "category-button" : "active-category-button"} key={category} onClick={() => setSelectedCategory(category)}>
 								{category}
 							</button>
 						);
