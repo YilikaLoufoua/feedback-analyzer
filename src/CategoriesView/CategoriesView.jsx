@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "./CategoriesView.css";
 
-export default function CategoriesView({ categorization }) {
-	let [selectedCategory, setSelectedCategory] = useState("");
-
+export default function CategoriesView({ categorization, selectedCategory, setSelectedCategory }) {
 	return (
 		<div className="categories-view">
 			<div className="category-buttons">

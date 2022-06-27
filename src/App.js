@@ -3,19 +3,22 @@ import { useState, useEffect } from "react";
 import Papa from "papaparse";
 import CategorizationBox from "./CategorizationBox/CategorizationBox";
 import CategoriesView from "./CategoriesView/CategoriesView";
+import { CSVLink } from "react-csv";
 
-const brain = require("brain.js"); // import from is not supported by brain.js
+const brain = require("brain.js");
 
 const App = () => {
 	let [file, setFile] = useState(undefined); // CSV file to be uploaded
 	let [data, setData] = useState(undefined); // parsed data as json object from CSV file
 	let [networkJson, setNetworkJson] = useState(undefined); // trained neural network
 	let [selectedColumn, setSelectedColumn] = useState("");
+	let [selectedCategory, setSelectedCategory] = useState("");
 	let [categorization, setCategorization] = useState({});
+	let [csvData, setCSVData] = useState("");
 
 	// Create a dictionary of categories and feedbacks
+	const categories = ["Course Experience", "Material", "Lecture", "Course Structure", "Peer Relations", "Administration", "Support", "Technical Topic"];
 	useEffect(() => {
-		const categories = ["Course Experience", "Material", "Lecture", "Course Structure", "Peer Relations", "Administration", "Support", "Technical Topic"];
 		let obj = {};
 		categories.forEach((category) => (obj[category] = []));
 		setCategorization(obj);
@@ -28,12 +31,21 @@ const App = () => {
 		}
 	}, [data]);
 
+	// Format categorization data for export
+	useEffect(() => {
+		if (selectedCategory) {
+			let csvExport = [];
+			categorization[selectedCategory].forEach((feedback) => {
+				let obj = {};
+				obj[selectedCategory] = feedback;
+				csvExport.push(obj);
+			});
+			setCSVData(csvExport);
+		}
+	}, [selectedCategory]);
+	console.log("selectedCategory: ", selectedCategory);
+
 	const handleAddCategory = (category, feedback) => {
-		// TODO: Store categorization of feedback
-		// 1. Access category within categorization data
-		// 		a. Find category
-		// 		b. Find feedback, if not found, append, else remove feedback then reappend
-		// 2. Set categorization state
 		let categorizedFeedbacks = categorization[category];
 
 		if (
@@ -125,8 +137,6 @@ const App = () => {
 			fileReader.onload = function (event) {
 				const csvString = event.target.result;
 				const data = Papa.parse(csvString).data;
-				//
-				//
 				setData(data);
 			};
 			fileReader.readAsText(file);
@@ -134,6 +144,7 @@ const App = () => {
 	};
 
 	const handleOnClear = () => {
+		setFile(undefined);
 		setData(undefined);
 	};
 
@@ -152,21 +163,22 @@ const App = () => {
 					Import CSV
 				</button>
 				<button
-					onClick={(e) => {
+					onClick={() => {
 						handleOnClear();
 					}}
 				>
 					Clear Data
 				</button>
+				<CSVLink data={csvData}>Export CSV</CSVLink>
 			</div>
-			<CategoriesView categorization={categorization} />
+			<CategoriesView categorization={categorization} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
 			{/* <div className="network-input">
 					<button type="button">Import Network</button>
 					<button type="button" onClick={() => exportNetwork()}>
 						Export Network
 					</button>
 				</div> */}
-			{selectedColumn && <CategorizationBox selectedColumn={selectedColumn} data={data} categorization={categorization} handleAddCategory={handleAddCategory} />}
+			{data && selectedColumn && <CategorizationBox selectedColumn={selectedColumn} data={data} categorization={categorization} handleAddCategory={handleAddCategory} />}
 			<h2> {data && file.name}</h2>
 			<div className="data-table">
 				<table>
