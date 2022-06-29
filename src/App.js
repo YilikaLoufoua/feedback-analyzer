@@ -14,10 +14,20 @@ const App = () => {
 	let [selectedColumn, setSelectedColumn] = useState("");
 	let [selectedCategory, setSelectedCategory] = useState("");
 	let [categorization, setCategorization] = useState({});
-	let [csvData, setCSVData] = useState("");
+
+	let [csvData, setCSVData] = useState([]);
 
 	// Create a dictionary of categories and feedbacks
-	const categories = ["Course Experience", "Material", "Lecture", "Course Structure", "Peer Relations", "Administration", "Support", "Technical Topic"];
+	const categories = [
+		"Course Experience",
+		"Material",
+		"Lecture",
+		"Course Structure",
+		"Peer Relations",
+		"Administration",
+		"Support",
+		"Technical Topic",
+	];
 	useEffect(() => {
 		let obj = {};
 		categories.forEach((category) => (obj[category] = []));
@@ -33,17 +43,39 @@ const App = () => {
 
 	// Format categorization data for export
 	useEffect(() => {
-		if (selectedCategory) {
-			let csvExport = [];
-			categorization[selectedCategory].forEach((feedback) => {
-				let obj = {};
-				obj[selectedCategory] = feedback;
-				csvExport.push(obj);
-			});
-			setCSVData(csvExport);
-		}
-	}, [selectedCategory]);
-	console.log("selectedCategory: ", selectedCategory);
+		const result = Object.entries(categorization).reduce((previousValue, category) => {
+			const key = category[0];
+			const subArray = category[1];
+			// If there is a value, then add the value to the array
+			if (subArray.length) {
+				// Do something
+				const convertedArary = subArray.map((value) => ({ [key]: value }));
+
+				return [...previousValue, ...convertedArary];
+			}
+
+			return previousValue;
+		}, []);
+
+		setCSVData(result);
+
+		// Object.keys(categorization).forEach((category) => {
+
+		// 	categorization[category].forEach((feedback) => {
+		// 		let obj = {};
+		// 		obj[category] = feedback;
+		// 		csvData.push(obj);
+		//
+
+		// 		setCSVData(csvData);
+		// 	});
+		// });
+		// categorization[selectedCategory].forEach((feedback) => {
+		// 	let obj = {};
+		// 	obj[selectedCategory] = feedback;
+		// 	csvExport.push(obj);
+		// });
+	}, [categorization]);
 
 	const handleAddCategory = (category, feedback) => {
 		let categorizedFeedbacks = categorization[category];
@@ -115,7 +147,9 @@ const App = () => {
 	// Download importable neural network as json
 	const exportNetwork = () => {
 		if (networkJson) {
-			const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(JSON.stringify(networkJson))}`;
+			const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+				JSON.stringify(networkJson)
+			)}`;
 			const link = document.createElement("a");
 			link.href = jsonString;
 			link.download = "model.json";
@@ -146,6 +180,7 @@ const App = () => {
 	const handleOnClear = () => {
 		setFile(undefined);
 		setData(undefined);
+		setSelectedCategory(undefined);
 	};
 
 	return (
@@ -154,7 +189,13 @@ const App = () => {
 				<h1>Feedback Analyzer</h1>
 			</div>
 			<div className="csv-input">
-				<input className="custom-file-input" type={"file"} id={"csvFileInput"} accept={".csv"} onChange={(e) => handleOnChange(e)} />
+				<input
+					className="custom-file-input"
+					type={"file"}
+					id={"csvFileInput"}
+					accept={".csv"}
+					onChange={(e) => handleOnChange(e)}
+				/>
 				<button
 					onClick={(e) => {
 						handleOnSubmit(e);
@@ -171,14 +212,25 @@ const App = () => {
 				</button>
 				<CSVLink data={csvData}>Export CSV</CSVLink>
 			</div>
-			<CategoriesView categorization={categorization} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+			<CategoriesView
+				categorization={categorization}
+				selectedCategory={selectedCategory}
+				setSelectedCategory={setSelectedCategory}
+			/>
 			{/* <div className="network-input">
 					<button type="button">Import Network</button>
 					<button type="button" onClick={() => exportNetwork()}>
 						Export Network
 					</button>
 				</div> */}
-			{data && selectedColumn && <CategorizationBox selectedColumn={selectedColumn} data={data} categorization={categorization} handleAddCategory={handleAddCategory} />}
+			{data && selectedColumn && (
+				<CategorizationBox
+					selectedColumn={selectedColumn}
+					data={data}
+					categorization={categorization}
+					handleAddCategory={handleAddCategory}
+				/>
+			)}
 			<h2> {data && file.name}</h2>
 			<div className="data-table">
 				<table>
@@ -194,6 +246,7 @@ const App = () => {
 								})}
 						</tr>
 						{data &&
+							!selectedColumn &&
 							data.map((row, idx) =>
 								idx === 0 ? null : (
 									<tr key={row}>
