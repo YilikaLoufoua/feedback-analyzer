@@ -68,7 +68,7 @@ export function CategoryView({
   growFeedbacks,
 }) {
   console.log('glowFeedbacks: ', glowFeedbacks);
-  console.log(growFeedbacks);
+  console.log('growfeedbacks: ', growFeedbacks);
   console.log('selectedSentiment: ', selectedSentiment);
   console.log('feedbacks: ', feedbacks);
   let filtered = feedbacks;
@@ -76,20 +76,6 @@ export function CategoryView({
     filtered = selectedSentiment == 'GROW' ? growFeedbacks : glowFeedbacks;
   }
 
-  if (selectedSentiment) {
-    return (
-      <div className="category-view">
-        {feedbacks &&
-          glowFeedbacks &&
-          selectedSentiment === 'GLOW' &&
-          feedbacks.map((feedback) => {
-            if (glowFeedbacks.includes(feedback)) {
-              return <li key={feedback}>{feedback}</li>;
-            }
-          })}
-      </div>
-    );
-  }
   return (
     <div className="category-view">
       {feedbacks &&
