@@ -1,0 +1,92 @@
+#categorization-box {
+  display: flex;
+  margin: 2rem auto;
+
+  text-align: center;
+  flex-direction: column;
+  height: 70vh;
+  width: 90vw;
+}
+#categorization-box .close {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: var(--lightblue);
+  border: 0;
+  cursor: pointer;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+}
+#categorization-box .head {
+  display: flex;
+  background: var(--blue);
+  align-items: center;
+  padding: 0 2rem;
+}
+#categorization-box h2 {
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  border-bottom: 1px solid var(--black);
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.info {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.info li {
+  box-sizing: border-box;
+  display: flex;
+  padding: 5px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info li:nth-child(even) {
+  background-color: var(--lightblue);
+}
+
+.info li p {
+  margin: 0 3rem;
+  padding: 10px 0;
+  line-height: 40px;
+}
+
+.sentiment-buttons-field {
+  display: flex;
+  justify-content: end;
+  height: 40px;
+}
+
+.glow-button {
+  background-color: var(--blue);
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 100%;
+  font-weight: bold;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+  margin: auto 10px;
+  cursor: pointer;
+}
+
+.grow-button {
+  background-color: var(--lightblue);
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 100%;
+  font-weight: bold;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+  margin: auto 10px;
+  cursor: pointer;
+}

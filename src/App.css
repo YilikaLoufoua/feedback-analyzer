@@ -1,52 +1,87 @@
-main {
-  width: 80%;
-  margin: 0 auto;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+* {
+  font-family: 'Playfair Display', serif;
+  background-color: inherit;
+  box-sizing: border-box;
+  color: var(--black);
 }
 
-.category {
-  cursor: pointer;
+body {
+  margin: 0;
+  background: var(--ivory);
 }
-.category:hover {
-  background: gray;
+:root {
+  --white: #e8eef2;
+  --lightblue: #b1cde4;
+  --blue: #77b6ea;
+  --ivory: #f5f4f4;
+  --black: #1f2122;
+}
+.contain {
+  display: flex;
+
+  justify-content: flex-start;
+}
+.header {
+  width: 100vw;
+  display: flex;
+  padding: 0 3vw;
+  border-bottom: 1px solid var(--lightblue);
+  background: var(--blue);
+}
+
+.header .title {
+  color: var(--white);
+}
+.csv-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.csv-actions {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.csv-actions button:hover,
+.csv-actions a:hover,
+.csv-actions input:hover {
+  background-color: var(--lightblue);
   transition: 0.4s;
 }
 
-.header {
-  margin: 3rem;
+.csv-actions a {
+  text-decoration: none;
 }
 
-thead,
-tbody {
-  display: block;
+.csv-actions input {
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px var(--white);
 }
 
-tbody {
-  height: 70vh;
+.network-input {
+  padding: 0 5vw;
+  display: flex;
+  justify-content: flex-end;
+  gap: 3rem;
 }
-
-.data-table {
-  overflow: auto;
-  border: 0.5px solid black;
+.network-input button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3rem;
 }
-
-.data-table table {
-  border-collapse: collapse;
-}
-
-th {
-  min-width: 150px;
-  text-align: center;
-  padding: 8px;
-  background-color: #c9daf8;
-  border: 0.5px solid black;
-}
-
-td {
-  text-align: left;
-  padding: 8px;
-  border: 0.5px solid black;
-}
-
-tr:nth-child(even) {
-  background-color: #e8f0fe;
+.csv-actions button,
+.csv-actions a,
+.csv-actions input {
+  cursor: pointer;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  background: var(--blue);
+  border: 1px solid var(--black);
 }

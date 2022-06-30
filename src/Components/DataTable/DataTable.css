@@ -1,0 +1,41 @@
+.data-table {
+  margin: 2rem auto;
+  height: 65vh;
+  width: 90vw;
+  overflow: auto;
+}
+
+.col {
+  cursor: pointer;
+  background: var(--blue);
+}
+
+.col:hover {
+  background: var(--lightblue);
+  transition: 0.4s;
+}
+
+.table-name {
+  margin-left: 5%;
+}
+
+.data-table table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 16px;
+  background-color: #2c66cb;
+  color: rgba(255, 255, 255, 0.95);
+  border: 0.5px solid black;
+}
+
+td {
+  padding: 6px 16px;
+  border: 0.5px solid black;
+}
+
+table tr:nth-child(odd) td {
+  background: var(--lightblue);
+}
