@@ -51,7 +51,6 @@ export default function CategoriesView({
       </div>
       <CategoryView
         category={selectedCategory}
-        className="category-view"
         feedbacks={categorization[selectedCategory]}
         glowFeedbacks={glowFeedbacks}
         growFeedbacks={growFeedbacks}
@@ -71,17 +70,26 @@ export function CategoryView({
   console.log('growfeedbacks: ', growFeedbacks);
   console.log('selectedSentiment: ', selectedSentiment);
   console.log('feedbacks: ', feedbacks);
-  let filtered = feedbacks;
+  let dumbBool = true;
+  let filtered = [...growFeedbacks, ...glowFeedbacks];
+  if (feedbacks) {
+    filtered = feedbacks;
+    dumbBool = false;
+  }
   if (selectedSentiment.length > 0) {
-    filtered = selectedSentiment == 'GROW' ? growFeedbacks : glowFeedbacks;
+    dumbBool = false;
+    filtered =
+      selectedSentiment == 'GROW'
+        ? filtered.filter((item) => growFeedbacks.includes(item))
+        : filtered.filter((item) => glowFeedbacks.includes(item));
   }
 
-  return (
+  return !dumbBool ? (
     <div className="category-view">
-      {feedbacks &&
-        feedbacks.map((feedback) => {
+      {filtered &&
+        filtered.map((feedback) => {
           return <li key={feedback}>{feedback}</li>;
         })}
     </div>
-  );
+  ) : null;
 }

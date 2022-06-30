@@ -33,6 +33,20 @@ function App() {
   // console.log('category: ', selectedCategory);
 
   // Create a dictionary of categories and feedbacks
+  const addGlow = (item) => {
+    if (glowFeedbacks.includes(item)) return;
+    if (growFeedbacks.includes(item)) {
+      setGrowFeedbacks(growFeedbacks.filter((item2) => item2 != item));
+    }
+    setGlowFeedbacks((prev) => [...prev, item]);
+  };
+  const addGrow = (item) => {
+    if (growFeedbacks.includes(item)) return;
+    if (glowFeedbacks.includes(item)) {
+      setGlowFeedbacks(glowFeedbacks.filter((item2) => item2 != item));
+    }
+    setGrowFeedbacks((prev) => [...prev, item]);
+  };
   const categories = [
     'Course Experience',
     'Material',
@@ -243,8 +257,8 @@ function App() {
                   categorization={categorization}
                   glowFeedbacks={glowFeedbacks}
                   setGlowFeedbacks={setGlowFeedbacks}
-                  growFeedbacks={growFeedbacks}
-                  setGrowFeedbacks={setGrowFeedbacks}
+                  addGrow={addGrow}
+                  addGlow={addGlow}
                   handleAddCategory={handleAddCategory}
                 />
               )}

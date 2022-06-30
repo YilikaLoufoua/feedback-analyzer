@@ -6,9 +6,10 @@ export default function CategorizationBox({
   data,
   categorization,
   handleAddCategory,
-  setGlowFeedbacks,
-  setGrowFeedbacks,
+
   setSelectedColumn,
+  addGlow,
+  addGrow,
 }) {
   let idx;
   if (data) {
@@ -31,20 +32,12 @@ export default function CategorizationBox({
           <button
             className="glow-button"
             onClick={() => {
-              setGlowFeedbacks((glowFeedbacks) => [
-                ...glowFeedbacks,
-                item[idx],
-              ]);
+              addGlow(item[idx]);
             }}
           >
             GLOW
           </button>
-          <button
-            className="grow-button"
-            onClick={() =>
-              setGrowFeedbacks((growFeedbacks) => [...growFeedbacks, item[idx]])
-            }
-          >
+          <button className="grow-button" onClick={() => addGrow(item[idx])}>
             GROW
           </button>
         </div>
