@@ -1,36 +1,38 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-import Papa from "papaparse";
-import CategorizationBox from "./CategorizationBox/CategorizationBox";
-import CategoriesView from "./CategoriesView/CategoriesView";
-import { CSVLink } from "react-csv";
+import './App.css';
+import { useState, useEffect } from 'react';
+import Papa from 'papaparse';
+import CategorizationBox from './CategorizationBox/CategorizationBox';
+import CategoriesView from './CategoriesView/CategoriesView';
+import { CSVLink } from 'react-csv';
 
-const brain = require("brain.js");
+const brain = require('brain.js');
 
 const App = () => {
 	let [file, setFile] = useState(undefined); // CSV file to be uploaded
 	let [data, setData] = useState(undefined); // parsed data as json object from CSV file
 	let [networkJson, setNetworkJson] = useState(undefined); // trained neural network
-	let [selectedColumn, setSelectedColumn] = useState("");
-	let [selectedCategory, setSelectedCategory] = useState("");
+	let [selectedColumn, setSelectedColumn] = useState('');
+	let [selectedCategory, setSelectedCategory] = useState('');
+	let [glowFeedbacks, setGlowFeedbacks] = useState([]);
+	let [growFeedbacks, setGrowFeedbacks] = useState([]);
 	let [categorization, setCategorization] = useState({});
-
 	let [csvData, setCSVData] = useState([]);
 
 	// Create a dictionary of categories and feedbacks
 	const categories = [
-		"Course Experience",
-		"Material",
-		"Lecture",
-		"Course Structure",
-		"Peer Relations",
-		"Administration",
-		"Support",
-		"Technical Topic",
+		'Course Experience',
+		'Material',
+		'Lecture',
+		'Course Structure',
+		'Peer Relations',
+		'Administration',
+		'Support',
+		'Technical Topic',
 	];
 	useEffect(() => {
 		let obj = {};
 		categories.forEach((category) => (obj[category] = []));
+
 		setCategorization(obj);
 	}, [data]);
 
@@ -150,9 +152,9 @@ const App = () => {
 			const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
 				JSON.stringify(networkJson)
 			)}`;
-			const link = document.createElement("a");
+			const link = document.createElement('a');
 			link.href = jsonString;
-			link.download = "model.json";
+			link.download = 'model.json';
 			link.click();
 		}
 	};
@@ -164,7 +166,7 @@ const App = () => {
 	};
 
 	// Parse CSV file
-	const handleOnSubmit = (e) => {
+	const displayCSV = (e) => {
 		e.preventDefault();
 
 		if (file) {
@@ -178,39 +180,44 @@ const App = () => {
 	};
 
 	const handleOnClear = () => {
-		setFile(undefined);
 		setData(undefined);
 		setSelectedCategory(undefined);
 	};
 
 	return (
 		<main>
-			<div className="header">
-				<h1>Feedback Analyzer</h1>
+			<div className='header'>
+				<h1 className='title'>Feedback Analyzer</h1>
 			</div>
-			<div className="csv-input">
-				<input
-					className="custom-file-input"
-					type={"file"}
-					id={"csvFileInput"}
-					accept={".csv"}
-					onChange={(e) => handleOnChange(e)}
-				/>
-				<button
-					onClick={(e) => {
-						handleOnSubmit(e);
-					}}
-				>
-					Import CSV
-				</button>
-				<button
-					onClick={() => {
-						handleOnClear();
-					}}
-				>
-					Clear Data
-				</button>
-				<CSVLink data={csvData}>Export CSV</CSVLink>
+
+			<div className='csv-field'>
+				<h2 className='hint'>Import a CSV file to begin analysis</h2>
+				<div className='csv-actions'>
+					<input
+						className='custom-file-input'
+						type={'file'}
+						id={'csvFileInput'}
+						accept={'.csv'}
+						onChange={(e) => handleOnChange(e)}
+					/>
+					<div className='csv-buttons'>
+						<button
+							onClick={(e) => {
+								displayCSV(e);
+							}}
+						>
+							Import CSV
+						</button>
+						<button
+							onClick={() => {
+								handleOnClear();
+							}}
+						>
+							Clear Data
+						</button>
+						<CSVLink data={csvData}>Export CSV</CSVLink>
+					</div>
+				</div>
 			</div>
 			<CategoriesView
 				categorization={categorization}
@@ -228,25 +235,28 @@ const App = () => {
 					selectedColumn={selectedColumn}
 					data={data}
 					categorization={categorization}
+					glowFeedbacks={glowFeedbacks}
+					setGlowFeedbacks={setGlowFeedbacks}
+					growFeedbacks={growFeedbacks}
+					setGrowFeedbacks={setGrowFeedbacks}
 					handleAddCategory={handleAddCategory}
 				/>
 			)}
-			<h2> {data && file.name}</h2>
-			<div className="data-table">
+			<h2 className='table-name'> {data && file.name}</h2>
+			<div className='data-table'>
 				<table>
 					<tbody>
 						<tr>
 							{data &&
 								data[0].map((col) => {
 									return (
-										<th key={col} className="col" onClick={() => setSelectedColumn(col)}>
+										<th key={col} className='col' onClick={() => setSelectedColumn(col)}>
 											{col}
 										</th>
 									);
 								})}
 						</tr>
 						{data &&
-							!selectedColumn &&
 							data.map((row, idx) =>
 								idx === 0 ? null : (
 									<tr key={row}>

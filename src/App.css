@@ -1,36 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
-html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  overflow-y: scroll;
-}
-
-main {
-  width: 90%;
-  margin: 0 auto;
+* {
+  font-family: 'Playfair Display', serif;
 }
 
 .header {
-  margin: auto;
-}
-
-.header h1 {
-  font-size: 2rem;
-  padding: 15px;
-  border-bottom: 1px solid black;
-  background-color: #2c66cb;
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.csv-input {
   display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #dadce0;
+  margin-bottom: 2rem;
+}
+
+.header .title {
+  margin-left: 10%;
+  font-size: 28px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #15317E;
+  width: 70%;
+}
+
+.header .hint {
+  margin: 2rem auto;
+}
+
+.csv-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.csv-actions {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
-.csv-input button {
+.csv-field button {
   background-color: #2c66cb;
+  margin-right: 1rem;
   border: 1px solid black;
   border-radius: 8px;
   color: #e8f0fe;
@@ -41,20 +48,18 @@ main {
   cursor: pointer;
 }
 
-.csv-input a {
+.csv-buttons a {
   text-decoration: none;
   background-color: #2c66cb;
   border: 1px solid black;
   border-radius: 8px;
+  padding: 5px;
   color: #e8f0fe;
-  font-size: 100%;
-  width: 120px;
   text-align: center;
-  line-height: 30px;
   cursor: pointer;
 }
 
-.csv-input input {
+.csv-field input {
   background: #c9daf8;
   border: 1px solid black;
   border-radius: 8px;
@@ -65,7 +70,7 @@ main {
   text-shadow: 1px 1px #fff;
   font-weight: 700;
   font-size: 10pt;
-  width: 70%;
+  margin-right: 2rem;
 }
 
 .col {
@@ -77,11 +82,15 @@ main {
   transition: 0.4s;
 }
 
+.table-name {
+  margin-left: 5%;
+}
 
 .data-table {
-  overflow: auto;
   margin: 2rem auto;
   height: 65vh;
+  width: 90%;
+  overflow: auto;
 }
 
 .data-table table {
