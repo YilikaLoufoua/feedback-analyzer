@@ -22,14 +22,15 @@ function App() {
   const [growFeedbacks, setGrowFeedbacks] = useState([]);
   const [categorization, setCategorization] = useState({});
   const [csvData, setCSVData] = useState([]);
-
-  console.log('file: ', file);
-  console.log('data: ', data);
-  console.log('network: ', networkJson);
-  console.log('column: ', selectedColumn);
-  console.log('categorization: ', categorization);
-  console.log('csvData: ', csvData);
-  console.log('category: ', selectedCategory);
+  // console.log('glow: ', glowFeedbacks);
+  // console.log('grow: ', growFeedbacks);
+  // console.log('file: ', file);
+  // console.log('data: ', data);
+  // console.log('network: ', networkJson);
+  // console.log('column: ', selectedColumn);
+  // console.log('categorization: ', categorization);
+  // console.log('csvData: ', csvData);
+  // console.log('category: ', selectedCategory);
 
   // Create a dictionary of categories and feedbacks
   const categories = [
@@ -221,6 +222,8 @@ function App() {
                 csvData={csvData}
               />
               <CategoriesView
+                glowFeedbacks={glowFeedbacks}
+                growFeedbacks={growFeedbacks}
                 categorization={categorization}
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}

@@ -58,6 +58,7 @@ body {
 }
 
 .csv-actions input {
+  align-items: center;
   white-space: nowrap;
   cursor: pointer;
   text-shadow: 1px 1px var(--white);
@@ -80,7 +81,7 @@ body {
   cursor: pointer;
   color: var(--white);
   font-size: 1.5rem;
-  padding: 0.5rem 1rem;
+  padding: 2px 0.5rem;
   border-radius: 1.5rem;
   background: var(--blue);
   border: 1px solid var(--black);

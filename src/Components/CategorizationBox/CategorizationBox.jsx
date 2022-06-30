@@ -30,9 +30,12 @@ export default function CategorizationBox({
         <div className="sentiment-buttons-field">
           <button
             className="glow-button"
-            onClick={() =>
-              setGlowFeedbacks((glowFeedbacks) => [...glowFeedbacks, item[idx]])
-            }
+            onClick={() => {
+              setGlowFeedbacks((glowFeedbacks) => [
+                ...glowFeedbacks,
+                item[idx],
+              ]);
+            }}
           >
             GLOW
           </button>
