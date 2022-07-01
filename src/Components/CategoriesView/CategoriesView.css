@@ -1,0 +1,77 @@
+.categories-view {
+  display: block;
+  overflow: auto;
+  overflow: auto;
+  margin: 0 auto;
+  width: 95vw;
+}
+
+.category-buttons-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-button {
+  background-color: var(--blue);
+  border: 1px solid black;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 2rem 1rem;
+  font-size: 100%;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.active-category-button {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid black;
+  border-radius: 8px;
+  color: #2c66cb;
+  margin: 2rem 1rem;
+  font-size: 100%;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.categories-view li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px;
+  border: 0.3px solid black;
+}
+
+.categories-view li:nth-child(even) {
+  background-color: #e8f0fe;
+}
+
+.categories-view li p {
+  margin: 8px auto;
+  padding: 0 15%;
+}
+
+.category-view {
+  margin-bottom: 2rem;
+}
+
+.sentiment-buttons {
+  margin-right: 1rem;
+  width: 300px;
+}
+
+.sentiment-buttons span {
+  font-size: 20px;
+}
