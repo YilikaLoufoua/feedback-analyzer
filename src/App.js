@@ -137,8 +137,9 @@ function App() {
 	};
 
 	const trainNetwork = () => {
-		// // Sample Network Training Process
-		// const network = new brain.recurrent.LSTM(); // Init network
+		// Inititalize  network
+		const network = new brain.recurrent.LSTM();
+
 		// Train and store network json object as state
 		// network.train(trainingData, {
 		// 	iterations: 100,
@@ -146,24 +147,47 @@ function App() {
 		// });
 		// setNetworkJson(network.toJSON());
 
-		// INSTEAD OF TRAINING: Init new network and load from previous network
-		const network = new brain.recurrent.LSTM();
-		const preTrainedNetworkJson = require('./models/model.json');
-		if (preTrainedNetworkJson) {
-			network.fromJSON(preTrainedNetworkJson);
-		}
-		// Predict
+		// // INSTEAD OF TRAINING WITH MANUALLY SET CATEGORIES: Use imported training data
+		const importedTrainingData = require('./data/trainingData.json');
+		console.log('importedTrainingData: ', importedTrainingData);
+
+		// // Train and store network json object as state
+		network.train(importedTrainingData, {
+			log: true,
+			iterations: 2000,
+		});
+		setNetworkJson(network.toJSON());
+
+		// // INSTEAD OF TRAINING: load from previous network
+		// const preTrainedNetworkJson = require('./models/model.json');
+		// if (preTrainedNetworkJson) {
+		// 	network.fromJSON(preTrainedNetworkJson);
+		// }
+
+		// // Predict
 		const test1 = 'I liked the project';
 		let output = network.run(test1);
 		console.log('test1: ', test1);
 		console.log('output: ', output);
+
 		let test2 = 'I liked working in groups';
 		output = network.run(test2);
 		console.log('test2: ', test2);
 		console.log('output: ', output);
-		let test3 = 'I liked working on the project in groups';
+
+		let test3 = 'I would like more support from the instructors';
 		output = network.run(test3);
 		console.log('test3: ', test3);
+		console.log('output: ', output);
+
+		let test4 = 'I disliked the lectures';
+		output = network.run(test4);
+		console.log('test4: ', test4);
+		console.log('output: ', output);
+
+		let test5 = 'The lectures went too fast';
+		output = network.run(test5);
+		console.log('test5: ', test5);
 		console.log('output: ', output);
 	};
 
@@ -180,6 +204,7 @@ function App() {
 
 	// Download importable neural network as json
 	const exportNetwork = () => {
+		console.log('exportNetwork: ', exportNetwork);
 		if (networkJson) {
 			const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
 				JSON.stringify(networkJson)
@@ -206,6 +231,7 @@ function App() {
 				displayCSV={displayCSV}
 				csvData={csvData}
 				trainNetwork={trainNetwork}
+				exportTrainingData={exportTrainingData}
 			/>
 			<CategoriesView
 				glowFeedbacks={glowFeedbacks}
@@ -232,7 +258,6 @@ function App() {
 					addGrow={addGrow}
 					addGlow={addGlow}
 					handleAddCategory={handleAddCategory}
-					exportTrainingData={exportTrainingData}
 				/>
 			)}
 			<DataTable data={data} file={file} setSelectedColumn={setSelectedColumn} />
