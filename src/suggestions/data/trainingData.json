@@ -1,182 +1,195 @@
 [
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Meeting everyone and learning Javascript!",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Meeting everyone and learning Javascript!",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Meeting everyone and learning Javascript!",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "Starting the Flixster project",
-		"icon": "material"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Meeting everyone and learning Javascript!",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "Starting the Flixster project",
-		"icon": "material"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Meeting everyone and learning Javascript!",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "It was great being in person again and being able to collaborate with other interns in person.",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "Starting the Flixster project",
-		"icon": "material"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Meeting everyone and learning Javascript!",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "It was great being in person again and being able to collaborate with other interns in person.",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "The help from Vincent",
-		"icon": "support"
-	},
-	{
-		"text": "Starting working on the Flixster project :)",
-		"icon": "material"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "Starting the Flixster project",
-		"icon": "material"
-	},
-	{
-		"text": "I enjoyed meeting other people and helping them out :)",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Meeting everyone and learning Javascript!",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "It was great being in person again and being able to collaborate with other interns in person.",
-		"icon": "peerRelations"
-	},
-	{
-		"text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle.",
-		"icon": "support"
-	},
-	{
-		"text": "The help from Vincent",
-		"icon": "support"
-	},
-	{
-		"text": "I think more support on concepts would be helpful it kind of feels like we are expected to do things without instruction",
-		"icon": "support"
-	}
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "No Category",
+        "text": "Being in person"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "Meeting everyone and learning Javascript!"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "No Category",
+        "text": "Being in person"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "Support",
+        "text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle."
+    },
+    {
+        "icon": "No Category",
+        "text": "Being in person"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "Meeting everyone and learning Javascript!"
+    },
+    {
+        "icon": "Material",
+        "text": "Styling with css grid"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "Support",
+        "text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle."
+    },
+    {
+        "icon": "No Category",
+        "text": "Being in person"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "Meeting everyone and learning Javascript!"
+    },
+    {
+        "icon": "Material",
+        "text": "Styling with css grid"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting the Flixster project"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "Support",
+        "text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle."
+    },
+    {
+        "icon": "No Category",
+        "text": "Being in person"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "Meeting everyone and learning Javascript!"
+    },
+    {
+        "icon": "Material",
+        "text": "Styling with css grid"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting the Flixster project"
+    },
+    {
+        "icon": "Material",
+        "text": "Lunch! I really enjoyed working on the website and seeing the changes I made pop up on the screen."
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "Support",
+        "text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle."
+    },
+    {
+        "icon": "No Category",
+        "text": "Being in person"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "Meeting everyone and learning Javascript!"
+    },
+    {
+        "icon": "Material",
+        "text": "Styling with css grid"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting the Flixster project"
+    },
+    {
+        "icon": "Material",
+        "text": "Lunch! I really enjoyed working on the website and seeing the changes I made pop up on the screen."
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "I enjoyed meeting other people and helping them out :)"
+    },
+    {
+        "icon": "Support",
+        "text": "Getting to try out the labs on our own and ask for help whenever we encountered an obstacle."
+    },
+    {
+        "icon": "No Category",
+        "text": "Being in person"
+    },
+    {
+        "icon": "No Category",
+        "text": "that it was the first day!"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting working on the Flixster project :)"
+    },
+    {
+        "icon": "Peer Relations",
+        "text": "Meeting everyone and learning Javascript!"
+    },
+    {
+        "icon": "Material",
+        "text": "Styling with css grid"
+    },
+    {
+        "icon": "Material",
+        "text": "Starting the Flixster project"
+    },
+    {
+        "icon": "Material",
+        "text": "Lunch! I really enjoyed working on the website and seeing the changes I made pop up on the screen."
+    }
 ]
+

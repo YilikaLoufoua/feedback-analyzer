@@ -10,7 +10,7 @@ import DataTable from "./Components/DataTable/DataTable";
 import * as use from "@tensorflow-models/universal-sentence-encoder";
 import { trainModel, suggestIcon } from "./suggestions/model";
 
-const CONFIDENCE_THRESHOLD = 0.65;
+const CONFIDENCE_THRESHOLD = 0.5;
 
 function App() {
     const [file, setFile] = useState(); // CSV file to be uploaded
@@ -95,16 +95,7 @@ function App() {
         }
     };
 
-    const categories = [
-        "Course Experience",
-        "Material",
-        "Lecture",
-        "Course Structure",
-        "Peer Relations",
-        "Administration",
-        "Support",
-        "Technical Topic",
-    ];
+    const categories = ["Material", "Lecture", "Peer Relations", "Support", "No Category"];
 
     const handleAddCategory = (category, feedback) => {
         let categorizedFeedbacks = categorization[category];
@@ -154,7 +145,7 @@ function App() {
     };
 
     const trainNetwork = async () => {
-        const testString = "Getting the help I needed";
+        const testString = "Working hard";
         console.log("testString: ", testString);
         const predictedIcon = await suggestIcon(model, encoder, testString, CONFIDENCE_THRESHOLD);
         console.log("predictedIcon: ", predictedIcon);

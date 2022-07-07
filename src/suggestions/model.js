@@ -4,7 +4,7 @@ const trainTasks = require("./data/trainingData.json");
 console.log("trainTasks: ", trainTasks);
 
 const MODEL_NAME = "suggestion-model";
-const N_CLASSES = 3;
+const N_CLASSES = 5;
 
 const encodeData = async (encoder, tasks) => {
     const sentences = tasks.map((t) => t.text.toLowerCase());
@@ -28,9 +28,11 @@ const trainModel = async (encoder) => {
 
     const yTrain = tf.tensor2d(
         trainTasks.map((t) => [
-            t.icon === "peerRelations" ? 1 : 0,
-            t.icon === "material" ? 1 : 0,
-            t.icon === "support" ? 1 : 0,
+            t.icon === "Material" ? 1 : 0,
+            t.icon === "Lecture" ? 1 : 0,
+            t.icon === "Peer Relations" ? 1 : 0,
+            t.icon === "Support" ? 1 : 0,
+            t.icon === "No Category" ? 1 : 0,
         ])
     );
     console.log("yTrain: ", yTrain);
@@ -71,16 +73,20 @@ const suggestIcon = async (model, encoder, taskName, threshold) => {
     const xPredict = await encodeData(encoder, [{ text: taskName }]);
 
     const prediction = await model.predict(xPredict).data();
+    const categories = ["Material", "Lecture", "Peer Relations", "Support", "No Category"];
+    console.log("categories: ", categories);
     console.log("prediction: ", prediction);
 
     if (prediction[0] > threshold) {
-        return "peerRelations";
+        return categories[0];
     } else if (prediction[1] > threshold) {
-        return "material";
+        return categories[1];
     } else if (prediction[2] > threshold) {
-        return "support";
+        return categories[2];
+    } else if (prediction[3] > threshold) {
+        return categories[3];
     } else {
-        return "low confidence";
+        return categories[4];
     }
 };
 
